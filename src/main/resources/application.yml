@@ -1,0 +1,32 @@
+server:
+  port: 8080
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    status-page-url: http://localhost:${server.port}/swagger-ui.html
+    
+    
+spring:
+   application:
+    name: springcloud-mybatis-pagehelper 
+   datasource:
+      name: test
+      url: jdbc:mysql://47.93.1.198:3306/shop?useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: root123
+      driver-class-name: com.mysql.jdbc.Driver
+
+mybatis: 
+  mapperLocations: classpath:mybatis/*.xml
+logging:
+  level:
+    com.pyy.dao: debug
+    
+    
+#pagehelper分页插件
+pagehelper:
+    helperDialect: mysql # 用来指定数据库
+    reasonable: true # 分页合理化参数，默认值为false。当该参数设置为 true 时，pageNum<=0 时会查询第一页， pageNum>pages（超过总数时），会查询最后一页。默认false 时，直接根据参数进行查询。
